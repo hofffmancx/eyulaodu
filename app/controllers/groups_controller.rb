@@ -8,6 +8,7 @@ class GroupsController < ApplicationController
 
   def show
     @group = Group.find(params[:id])   # ID就是http://localhost:3000/groups/1里的1.在数据库表里找到ID是1的group信息，把它赋值给实体变量@group，显示出来
+    @comments = @group.comments
   end
 
   def new

@@ -8,4 +8,23 @@
   <h2><%= @group.title %></h2>   <!-- 引用实例变量@group的title栏位 -->
   <%= "#{@group.impressionist_count} 次" %>
   <p><%= raw @group.description %></p>
+
+
+  <table class="table">
+      <thead>
+        <tr>
+          <th>评论内容</th>
+          <th>发表时间</th>
+        </tr>
+      </thead>
+      <tbody>
+        <% @comments.each do |comment| %>
+          <tr>
+            <td><%= comment.content %></td>
+            <td><%= comment.created_at %></td>
+          </tr>
+        <% end %>
+      </tbody>
+    </table>
+    <%= render "comments/form" %>
 </div>
