@@ -9,6 +9,7 @@
       <tr>
         <td>文章列表</td>
         <td>发布时间</td>
+        <td>阅读次数</td>
       </tr>
     </thead>
     <tbody>
@@ -16,8 +17,8 @@
       <!-- 从controller index里 传过来的变量 @groups，里面有很多的数据。 把每个数据遍历一遍，形成一个表格   -->
         <tr>
 
-          <td style="border: 1px dotted white"> <%= link_to(group.title, group_path(group)) %></td>
-          <td style="border: 1px dotted white"><%= group.updated_at.localtime.strftime("%Y/%m/%d") %></td>
+          <td width="50%" style="border: 1px dotted white"> <%= link_to(group.title, group_path(group)) %> </td>
+          <td width="35%" style="border: 1px dotted white"><%= group.updated_at.localtime.strftime("%Y/%m/%d") %></td>
           <% if current_user%>
           <td>
               <%= link_to("Edit", edit_group_path(group), class: "btn btn-sm btn-default")%>
@@ -25,8 +26,8 @@
                           method: :delete, data: { confirm: "Are you sure?" } )%>
                           <!-- method：：delete 是一个需要按钮才触发的动作。 data 是触发信息的方法。  -->
           </td>
-
           <% end %>
+          <td width="15%"  style="border: 1px dotted white">  <%= "#{group.impressionist_count} 次" %></td>
         </tr>
       <% end %>
 

@@ -1,5 +1,6 @@
 class GroupsController < ApplicationController
   before_action :authenticate_user!, only: [:new]
+  impressionist actions: [:show]
 
   def index
     @groups = Group.all     # controller 找到数据库里的所有的group数据，把它赋值给变量@groups。@groups这个变量，提供给groups/index.html.erb使用。
