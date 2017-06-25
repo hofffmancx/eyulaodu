@@ -186,7 +186,6 @@ PLATFORMS
 DEPENDENCIES
   bootstrap-sass
   byebug
-  carrierwave
   coffee-rails (~> 4.2)
   devise
   jbuilder (~> 2.5)
