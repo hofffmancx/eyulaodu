@@ -5,6 +5,9 @@ Rails.application.routes.draw do
   resources :groups do
     resources :comments
   end
+
+  resources :categories
+
   root "groups#index"
 
 end

@@ -2,6 +2,9 @@
   <h2>添加文章</h2>
 
   <hr>
+  <div class="group">
+     <%= select_tag(:category_id, options_for_select(@categories), :prompt => "类别")%>
+   </div>
 
   <%= render "form" %>
 
