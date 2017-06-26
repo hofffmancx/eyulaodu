@@ -1,4 +1,9 @@
+
+
 <%= simple_form_for @group do |f| %>
+<div class="group">
+   <%= select_tag(:category_id, options_for_select(@categories), :prompt => "类别")%>
+ </div>
   <div class="form-group">
 
     <%= f.input :title, input_html: { class: "form-control"} %>
