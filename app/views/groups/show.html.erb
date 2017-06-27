@@ -8,7 +8,20 @@
   <h2><%= @group.title %></h2>   <!-- 引用实例变量@group的title栏位 -->
   <%= "#{@group.impressionist_count} 次" %>
   <p><%= raw @group.description %></p>
-  <%= @category %>
+  <!-- <p><%= pluralize(@group.votes.count, "vote") %></p>
+    <p><%= button_to '+1', upvote_group_path(@group), method: :post %></p> -->
+    <br><br>
+    <div class="upvote">
+        <%= link_to upvote_group_path(@group), method: :post do %>
+        <span class="glyphicon glyphicon-thumbs-up" aria-hidden="true" style="color:#ff5722;"></span>
+        <%= @group.votes.count %>次
+       <% end %>
+    </div>
+
+</div>
+<br>
+
+
 
   <table class="table">
       <thead>

@@ -4,6 +4,9 @@ Rails.application.routes.draw do
 
   resources :groups do
     resources :comments
+    member do
+      post 'upvote'
+    end
   end
 
   resources :categories

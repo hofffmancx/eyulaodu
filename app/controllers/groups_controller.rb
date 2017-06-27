@@ -1,6 +1,6 @@
 class GroupsController < ApplicationController
   before_action :authenticate_user!, only: [:new]
-  impressionist actions: [:show]
+  impressionist actions: [:show], unique: [:session_hash]
 
   def index
     if params[:category].blank?
@@ -51,6 +51,12 @@ end
     @group.destroy                     # 实体变量@group里的数据，毁掉
     flash[:alert] = "Group deleted"
     redirect_to groups_path
+  end
+
+  def upvote
+    @group = Group.find(params[:id])
+    @group.votes.create
+    redirect_to(group_path)
   end
 
   private
