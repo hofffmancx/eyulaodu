@@ -7,6 +7,9 @@ Rails.application.routes.draw do
     member do
       post 'upvote'
     end
+    collection do
+      get :search
+    end
   end
 
   resources :categories

@@ -1,0 +1,26 @@
+<div class="home-index">
+  <div class="container">
+    <!--=== 搜索结果，没有符合条件的数据 ===-->
+    <% if @query_string.blank? %>
+      <h2 class="search-info-title">搜索信息不能为空，请输入关键字搜索</h2>
+    <% elsif @groups.blank?%>
+      <br>
+        <h2 class="search-info-title">亲，没有搜索到文章哦，要不换个关键词试试？</h2>
+    <% else %>
+    <!--=== 搜索结果，有符合条件的数据 ===-->
+    <!--=== 搜索內容 ===-->
+      <div class='row'>
+       <% @groups.each do |group| %>
+         <div class='col-xs-12 col-sm-4 col-md-3 product-content'>
+           <div class="product-info">
+            <p><%= link_to(render_highlight_content(group,@query_string), group_path(group)) %></p>
+           </div>
+         </div>
+       </div>
+       <div class="page-box">
+         <%= will_paginate @groups, renderer: BootstrapPagination::Rails, :previous_label => t('previous-label'), :next_label => t('next-label') %>
+       </div>
+       <% end %>
+    <% end %>
+  </div>
+</div>

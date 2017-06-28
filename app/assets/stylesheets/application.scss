@@ -55,3 +55,36 @@ font-size: 12px;
   background-color: #f0e5cf;
   box-shadow: 0px -2px 1px #888888;
 }
+
+.content-blog {   // 设置博客的正文内边距，让博客内容看起来上下左右协调
+  padding: 25px;
+}
+
+.space-margin {   // show.html.erb , 为了让评论和文章内容之间留空
+  height:15px;
+}
+
+.index-head-1 {   // 首页左边的主目录抬头
+  background-color: #f0e5cf;
+  box-shadow: 0px -2px 1px #888888;
+  padding: 14px 18px 28px 18px ;
+  margin-bottom: 5px;  // 让目录栏和下面位置有空隙
+}
+
+.category-index {  // 把分类前的小实心圆去掉，文字居中
+list-style-type: none;
+float: left;  // 让li标签横排
+}
+
+.search-navbar {   // 调整搜索栏的大小，位置
+  width: 267px;
+    padding-top: 6px;
+    padding-left: 24px;
+    margin-left: 257px;
+}
+
+body {
+  background-image: url(msu.jpg);
+  background-repeat: no-repeat;
+  opacity: 0.95;
+}

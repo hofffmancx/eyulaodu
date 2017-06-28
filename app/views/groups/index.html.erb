@@ -1,4 +1,7 @@
-<div class="col-md-12">
+
+
+
+<div>
   <% if current_user %>
   <div class="group">
     <%= link_to("New group", new_group_path, class: "btn btn-primary pull-right") %>
@@ -7,7 +10,7 @@
   <table class="table home-index">
     <thead class="index-head">
       <tr>
-        <td>文章列表</td>
+        <td style="text-align:center">文章列表</td>
         <td>发布时间</td>
         <td>阅读次数</td>
       </tr>
@@ -16,9 +19,8 @@
       <% @groups.each do |group| %>
       <!-- 从controller index里 传过来的变量 @groups，里面有很多的数据。 把每个数据遍历一遍，形成一个表格   -->
         <tr>
-
-          <td width="50%" style="border: 1px dotted white"> <%= link_to(group.title, group_path(group)) %> </td>
-          <td width="35%" style="border: 1px dotted white"><%= group.updated_at.localtime.strftime("%Y/%m/%d") %></td>
+          <td width="60%" style="border: 1px dotted white; text-align:center"> <%= link_to(group.title, group_path(group)) %> </td>
+          <td width="25%" style="border: 1px dotted white"><%= group.created_at.localtime.strftime("%Y/%m/%d") %></td>
           <% if current_user%>
           <td>
               <%= link_to("Edit", edit_group_path(group), class: "btn btn-sm btn-default")%>
@@ -33,14 +35,4 @@
 
     </tbody>
   </table>
-  <% if current_user %>
-      <%= link_to("Categories", categories_path)%>
-  <% end %>
-  <%= link_to("主目录", groups_path) %>
-  <% Category.all.each do |category| %>
-    <li>
-     <%= link_to(category.name, groups_path(category: category.name)) %>
-   </li>
-  <% end %>
-
 </div>

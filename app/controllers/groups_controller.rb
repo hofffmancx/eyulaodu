@@ -1,15 +1,16 @@
 class GroupsController < ApplicationController
   before_action :authenticate_user!, only: [:new]
   impressionist actions: [:show], unique: [:session_hash]
+  before_action :validate_search_key, only: [:search]
 
   def index
-    if params[:category].blank?
-    @groups = Group.all     # controller 找到数据库里的所有的group数据，把它赋值给变量@groups。@groups这个变量，提供给groups/index.html.erb使用。
-  else
-    @category_id = Category.find_by(name: params[:category]).id
-    @groups = Group.where(category_id: @category_id)
+      if params[:category].blank?
+      @groups = Group.all.order("created_at DESC")     # controller 找到数据库里的所有的group数据，把它赋值给变量@groups。@groups这个变量，提供给groups/index.html.erb使用。
+    else
+      @category_id = Category.find_by(name: params[:category]).id
+      @groups = Group.where(category_id: @category_id).order("created_at DESC")
+    end
   end
-end
 
   def show
     @group = Group.find(params[:id])   # ID就是http://localhost:3000/groups/1里的1.在数据库表里找到ID是1的group信息，把它赋值给实体变量@group，显示出来
@@ -54,9 +55,16 @@ end
   end
 
   def upvote
-    @group = Group.find(params[:id])
-    @group.votes.create
-    redirect_to(group_path)
+    @group = Group.find(params[:id]) # 在Group的数据库里，根据group的ID找到这个group，把它交给@group
+    @group.votes.create  #给@group创建一个点赞
+    redirect_to(group_path)  # 创建完毕后，返回group的show页面。
+  end
+
+  def search
+     if @query_string.present?
+        search_result = Group.ransack(@search_criteria).result(:distinct => true)
+        @groups = search_result.paginate(:page => params[:page], :per_page => 5 )
+      end
   end
 
   private
@@ -64,5 +72,16 @@ end
   def group_params
     params.require(:group).permit(:title, :description, :image, :category_id)
   end
+
+  protected
+
+     def validate_search_key
+       @query_string = params[:q].gsub(/\\|\'|\/|\?/, "") if params[:q].present?
+       @search_criteria = search_criteria(@query_string)
+     end
+
+     def search_criteria(query_string)
+       { title_or_description_cont: query_string }
+     end
 
 end
