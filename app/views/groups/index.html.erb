@@ -34,5 +34,12 @@
       <% end %>
 
     </tbody>
+
   </table>
+  <div class="text-center paginate-dzl">
+    <div style="border-bottom:1px dashed #d6d6d6;margin:5px"></div>
+
+    <%= will_paginate @groups, :previous_label => '上一页', :next_label => '下一页', :class => "flickr_pagination" %>
+  </div>
+
 </div>

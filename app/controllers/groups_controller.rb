@@ -1,14 +1,14 @@
 class GroupsController < ApplicationController
   before_action :authenticate_user!, only: [:new]
-  impressionist actions: [:show], unique: [:session_hash]
+  impressionist actions: [:show]
   before_action :validate_search_key, only: [:search]
 
   def index
       if params[:category].blank?
-      @groups = Group.all.order("created_at DESC")     # controller 找到数据库里的所有的group数据，把它赋值给变量@groups。@groups这个变量，提供给groups/index.html.erb使用。
+      @groups = Group.all.order("created_at DESC").paginate(:page => params[:page], :per_page => 20)     # controller 找到数据库里的所有的group数据，把它赋值给变量@groups。@groups这个变量，提供给groups/index.html.erb使用。
     else
       @category_id = Category.find_by(name: params[:category]).id
-      @groups = Group.where(category_id: @category_id).order("created_at DESC")
+      @groups = Group.where(category_id: @category_id).order("created_at DESC").paginate(:page => params[:page], :per_page => 20)
     end
   end
 

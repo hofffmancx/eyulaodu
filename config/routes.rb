@@ -12,6 +12,7 @@ Rails.application.routes.draw do
     end
   end
 
+  resources :aboutme
   resources :categories
 
   root "groups#index"

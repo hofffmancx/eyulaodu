@@ -2,7 +2,8 @@
     <div class="container-fluid">
         <div class="navbar-header">
             <a class="navbar-brand" href="/">俄语互联网资源精选</a>
-        </div>
+            <div class="info-web">搜索<span style="font-style:oblique">&nbsp;&nbsp;好玩、有趣、有用&nbsp;&nbsp;</span>的互联网俄语资料</div>        </div>
+
 
         <!-- 搜索框 -->
 
@@ -54,7 +55,7 @@
        <%= link_to(category.name, groups_path(category: category.name)) %> |
      </li>
     <% end %>
-    <li class="category-index"><%= link_to("关于我", groups_path) %></li>
+    <li class="category-index"><%= link_to("关于我", aboutme_index_path) %></li>
   </div>
 
 </div>
