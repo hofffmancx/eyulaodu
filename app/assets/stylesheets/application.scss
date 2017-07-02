@@ -55,3 +55,89 @@ font-size: 12px;
   background-color: #f0e5cf;
   box-shadow: 0px -2px 1px #888888;
 }
+
+.content-blog {   // 设置博客的正文内边距，让博客内容看起来上下左右协调
+  padding: 25px;
+}
+
+.space-margin {   // show.html.erb , 为了让评论和文章内容之间留空
+  height:15px;
+}
+
+.index-head-1 {   // 首页左边的主目录抬头
+  background-color: #f0e5cf;
+  box-shadow: 0px -2px 1px #888888;
+  padding: 14px 18px 28px 18px ;
+  margin-bottom: 5px;  // 让目录栏和下面位置有空隙
+}
+
+.category-index {  // 把分类前的小实心圆去掉，文字居中
+list-style-type: none;
+float: left;  // 让li标签横排
+}
+
+.search-navbar {   // 调整搜索栏的大小，位置
+  width: 267px;
+    padding-top: 6px;
+    padding-left: 24px;
+    margin-left: 257px;
+}
+
+body {     //设置背景图片
+  background-image: url(msu.jpg);
+  background-repeat: no-repeat;
+  opacity: 0.95;  // 所有body下内容的透明度
+}
+
+.paginate-dzl {    //分页标签，向让浮动， 填补和文章列表的空格
+  background-color: white;
+  position:relative;
+  top: -20px;
+}
+
+
+.flickr_pagination {   //这是分页美化的CSS，从官网上下载的
+  text-align: center;
+  padding: 1.3em;
+  cursor: default; }
+  .flickr_pagination a, .flickr_pagination span, .flickr_pagination em {
+    padding: 0.2em 0.5em; }
+  .flickr_pagination .disabled {
+    color: #aaaaaa; }
+  .flickr_pagination .current {
+    font-style: normal;
+    font-weight: bold;
+    color: #0063dc; }
+  .flickr_pagination a {
+    border: 1px solid #dddddd;
+    color: #0063dc;
+    text-decoration: none; }
+    .flickr_pagination a:hover, .flickr_pagination a:focus {
+      border-color: #003366;
+      background: #0063dc;
+      color: white; }
+  .flickr_pagination .page_info {
+    color: #aaaaaa;
+    padding-top: 0.8em; }
+  .flickr_pagination .previous_page, .flickr_pagination .next_page {
+    border-width: 2px; }
+  .flickr_pagination .previous_page {
+    margin-right: 1em; }
+  .flickr_pagination .next_page {
+    margin-left: 1em; }
+
+.info-web {   //好玩，有趣，有用的互联网俄语资料 的字体设置
+  font-family: serif;
+  font-size: 14px;
+  margin-top: 18px;
+  display: inline-block;
+  color: #3479c7;
+}
+
+.dzl-footer {  //footer 的字体颜色
+  // background-color: #3479c7;
+  // opacity: 0.8;
+  padding-top: 24px;
+  padding-bottom: 20px;
+  color: white;
+}

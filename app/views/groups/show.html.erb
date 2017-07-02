@@ -1,10 +1,53 @@
-<div class="col-md-12">
+
+<div class="col-md-12 home-index content-blog">
   <% if current_user %>
   <div class="group">
      <%= link_to("Edit", edit_group_path(@group), class: "btn btn-primary pull-right")%> <!--编辑实例变量@group的路径 -->
   </div>
   <% end %>
   <!-- @group的含义：在controller的show中，我们从数据库中根据group的ID找到了group的所有信息，把它传给了实力变量@group。 -->
-  <h2><%= @group.title %></h2>   <!-- 引用实例变量@group的title栏位 -->
+
+  <h3 style="text-align:center"><%= @group.title %></h3>   <!-- 引用实例变量@group的title栏位 -->
+  <div style="text-align:right">
+    发布时间：<%= @group.updated_at.localtime.strftime("%Y/%m/%d") %>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+    阅读次数：<%= "#{@group.impressionist_count} 次" %>
+  </div>
+  <div style="border-bottom:1px dashed #d6d6d6;margin:5px"></div>
+  <br><br>
   <p><%= raw @group.description %></p>
+    <br><br>
+    <div class="upvote">
+        <%= link_to upvote_group_path(@group), method: :post do %>
+        <span class="glyphicon glyphicon-thumbs-up" aria-hidden="true" style="color:#ff5722;"></span>
+        <%= @group.votes.count %>次
+       <% end %>
+    </div>
+
+</div>
+<br>
+
+<div class="col-md-12 space-margin"></div>
+<div class="col-md-12 home-index content-blog">
+  <table class="table">
+      <thead>
+        <tr>
+          <th>评论内容</th>
+          <th></th>
+        </tr>
+      </thead>
+      <tbody>
+        <% @comments.each do |comment| %>
+          <tr>
+            <td width=85%><%= comment.content %></td>
+            <td width=15%><%= comment.created_at.localtime.strftime("%Y/%m/%d")  %></td>
+          </tr>
+        <% end %>
+      </tbody>
+    </table>
+  </div>
+  <div class="col-md-12 space-margin"></div>
+  <div class="col-md-12 home-index content-blog">
+
+    <%= render "comments/form" %>
+  </div>
 </div>

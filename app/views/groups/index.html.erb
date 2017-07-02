@@ -1,4 +1,7 @@
-<div class="col-md-12">
+
+
+
+<div>
   <% if current_user %>
   <div class="group">
     <%= link_to("New group", new_group_path, class: "btn btn-primary pull-right") %>
@@ -7,17 +10,17 @@
   <table class="table home-index">
     <thead class="index-head">
       <tr>
-        <td>文章列表</td>
+        <td style="text-align:center">文章列表</td>
         <td>发布时间</td>
+        <td>阅读次数</td>
       </tr>
     </thead>
     <tbody>
       <% @groups.each do |group| %>
       <!-- 从controller index里 传过来的变量 @groups，里面有很多的数据。 把每个数据遍历一遍，形成一个表格   -->
         <tr>
-
-          <td style="border: 1px dotted white"> <%= link_to(group.title, group_path(group)) %></td>
-          <td style="border: 1px dotted white"><%= group.updated_at.localtime.strftime("%Y/%m/%d") %></td>
+          <td width="60%" style="border: 1px dotted white; text-align:center"> <%= link_to(group.title, group_path(group)) %> </td>
+          <td width="25%" style="border: 1px dotted white"><%= group.created_at.localtime.strftime("%Y/%m/%d") %></td>
           <% if current_user%>
           <td>
               <%= link_to("Edit", edit_group_path(group), class: "btn btn-sm btn-default")%>
@@ -25,11 +28,18 @@
                           method: :delete, data: { confirm: "Are you sure?" } )%>
                           <!-- method：：delete 是一个需要按钮才触发的动作。 data 是触发信息的方法。  -->
           </td>
-
           <% end %>
+          <td width="15%"  style="border: 1px dotted white">  <%= "#{group.impressionist_count} 次" %></td>
         </tr>
       <% end %>
 
     </tbody>
+
   </table>
+  <div class="text-center paginate-dzl">
+    <div style="border-bottom:1px dashed #d6d6d6;margin:5px"></div>
+
+    <%= will_paginate @groups, :previous_label => '上一页', :next_label => '下一页', :class => "flickr_pagination" %>
+  </div>
+
 </div>
