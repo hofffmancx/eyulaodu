@@ -1,2 +1,5 @@
 class AboutmeController < ApplicationController
+
+  
+
 end

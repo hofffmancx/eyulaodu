@@ -2,7 +2,7 @@
     <div class="container-fluid">
         <div class="navbar-header">
             <a class="navbar-brand" href="/">俄语互联网资源精选</a>
-            <div class="info-web">搜索<span style="font-style:oblique">&nbsp;&nbsp;好玩、有趣、有用&nbsp;&nbsp;</span>的互联网俄语资料</div>
+            <div class="info-web">搜集<span style="font-style:oblique">&nbsp;&nbsp;好玩、有趣、有用&nbsp;&nbsp;</span>的互联网俄语资料</div>
         </div>
 
 
@@ -26,7 +26,7 @@
         <div class="collapse navbar-collapse">
             <ul class="nav navbar-nav navbar-right">
               <% if !current_user %>
-                  <li><%= link_to("注册", new_user_registration_path) %> </li>
+                  <!-- <li><%= link_to("注册", new_user_registration_path) %> </li> -->
                   <li><%= link_to("登录", new_user_session_path) %></li>
                 <% else %>
                   <li class="dropdown">
